@@ -1,5 +1,8 @@
 package mesorts
 
+//Author: Ryon McAuley
+//Date: 8/14/2020
+
 type Sorting interface {
 	//Perform a Selection Sort
 	SelectionSort(arr []int)
@@ -30,24 +33,24 @@ func swap(xp *int, yp *int) {
 	*yp = tmp
 }
 
-func (s *Sorter) QuickSort(arr []int, low int, high int)  {
-    if low < high {
-        pi := partition(arr, low, high)
-        s.QuickSort(arr, low, pi-1)
-        s.QuickSort(arr, pi+1, high)
-    }
+func (s *Sorter) QuickSort(arr []int, low int, high int) {
+	if low < high {
+		pi := partition(arr, low, high)
+		s.QuickSort(arr, low, pi-1)
+		s.QuickSort(arr, pi+1, high)
+	}
 }
 
 func partition(arr []int, low int, high int) int {
-    pivot := arr[high]
-    i := low-1
+	pivot := arr[high]
+	i := low - 1
 
-    for j:=low; j < high; j++ {
-        if arr[j] < pivot {
-            i++
-            swap(&arr[i], &arr[j])
-        }
-    }
-    swap(&arr[i+1], &arr[high])
-    return i+1
+	for j := low; j < high; j++ {
+		if arr[j] < pivot {
+			i++
+			swap(&arr[i], &arr[j])
+		}
+	}
+	swap(&arr[i+1], &arr[high])
+	return i + 1
 }
